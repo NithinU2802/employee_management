@@ -2,6 +2,7 @@ package com.empmanage.employee_service.service.Impl;
 
 import com.empmanage.employee_service.dto.EmployeeRequestDTO;
 import com.empmanage.employee_service.dto.EmployeeResponseDTO;
+import com.empmanage.employee_service.exception.EmailAlreadyExistsException;
 import com.empmanage.employee_service.mapper.EmployeeMapper;
 import com.empmanage.employee_service.model.Employee;
 import com.empmanage.employee_service.repository.EmployeeRepository;
@@ -28,6 +29,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public EmployeeResponseDTO createEmployee(EmployeeRequestDTO employeeRequestDTO){
+        if(employeeRepository.existsByEmail(employeeRequestDTO.getEmail())) {
+            throw new EmailAlreadyExistsException("Employee email "+employeeRequestDTO.getEmail()+" is already exist");
+        }
         Employee employee = employeeRepository.save(EmployeeMapper.toEntity(employeeRequestDTO));
         return EmployeeMapper.toDTO(employee);
     }
