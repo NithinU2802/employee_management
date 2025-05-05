@@ -1,0 +1,15 @@
+### Create a new patient entity
+
+POST http://localhost:8000/employees
+content-Type: application/json
+
+{
+    "name": "Nithin U",
+    "email": "nithin@gmail.com",
+    "address": "123 Demo Street",
+    "dateOfBirth": "2002-10-28",
+    "joinDate": "2024-11-28"
+}
+
+
+###
