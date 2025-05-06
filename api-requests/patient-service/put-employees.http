@@ -1,0 +1,12 @@
+### Update an employee
+PUT http://localhost:8000/employees/223e4567-e89b-12d3-a456-426614174014
+Content-Type: application/json
+
+{
+    "name": "Isabella Walker Chris",
+    "email": "isabella.walker.chris@example.com",
+    "address": "123 Fransis Street",
+    "dateOfBirth": "1998-10-10"
+}
+
+###

@@ -33,4 +33,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<Map<String,String>> handleEmployeeNotFoundException(EmployeeNotFoundException ex){
+        log.warn("Employee not found {} ",ex.getMessage());
+        Map<String,String> errors = new HashMap<>();
+        errors.put("message","Employee Not Found");
+        return ResponseEntity.badRequest().body(errors);
+    }
+
 }

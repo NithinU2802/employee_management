@@ -1,5 +1,6 @@
 package com.empmanage.employee_service.dto;
 
+import com.empmanage.employee_service.dto.Validators.CreateEmployeeValidationGroup;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class EmployeeRequestDTO {
     @NotBlank(message = "Date of birth is required")
     private String dateOfBirth;
 
-    @NotNull(message = "Registered date is required")
+    @NotBlank(groups = CreateEmployeeValidationGroup.class, message = "Join date is required")
     private String joinDate;
 
 }
